@@ -15,6 +15,7 @@ namespace ZombieAttack.Controllers
         [SerializeField] private float moveSpeed = 10f;
         [SerializeField] private float turnSpeed = 10f;
         [SerializeField] private Transform turnTransform;
+        [SerializeField] private WeaponController currentWeapon;
         
         private IInputReader _input;
         private IMover _mover;
@@ -40,6 +41,11 @@ namespace ZombieAttack.Controllers
             _direction = _input.Direction;
             _xRotator.RotationAction(_input.Rotation.x, turnSpeed);
             _yRotator.RotationAction(_input.Rotation.y,turnSpeed);
+
+            if (_input.IsAttackButtonPressed)
+            {
+                currentWeapon.Attack();
+            }
         }
 
         private void FixedUpdate()

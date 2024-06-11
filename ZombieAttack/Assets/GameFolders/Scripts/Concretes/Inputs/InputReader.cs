@@ -8,6 +8,7 @@ namespace ZombieAttack.Inputs
     {
         public Vector3 Direction { get; private set; }
         public Vector2 Rotation { get; private set; }
+        public bool IsAttackButtonPressed { get; private set; }
 
         public void OnMove(InputAction.CallbackContext context)
         {
@@ -19,6 +20,10 @@ namespace ZombieAttack.Inputs
         {
             Rotation = context.ReadValue<Vector2>();
         }
-        
+
+        public void OnAttack(InputAction.CallbackContext context)
+        {
+            IsAttackButtonPressed = context.ReadValueAsButton();
+        }
     }
 }
