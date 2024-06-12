@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.UI;
+using ZombieAttack.Abstracts.Controllers;
 using ZombieAttack.Controllers;
 
 namespace ZombieAttack.Animation
@@ -10,9 +11,9 @@ namespace ZombieAttack.Animation
     {
         private Animator _animator;
 
-        public CharacterAnimation(PlayerController entity)
+        public CharacterAnimation(IEntityController entity)
         {
-            _animator = entity.GetComponentInChildren<Animator>();
+            _animator = entity.transform.GetComponentInChildren<Animator>();
         }
 
         public void MoveAnimation(float moveSpeed)
