@@ -17,7 +17,7 @@ namespace ZombieAttack.Helpers
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawSphere(this.transform.position, attackSo.FloatValue);
+            Gizmos.DrawWireSphere(this.transform.position, attackSo.FloatValue);
         }
     }
 }

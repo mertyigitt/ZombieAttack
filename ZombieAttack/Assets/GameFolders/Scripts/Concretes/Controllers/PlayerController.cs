@@ -16,7 +16,6 @@ namespace ZombieAttack.Controllers
         [SerializeField] private float moveSpeed = 10f;
         [SerializeField] private float turnSpeed = 10f;
         [SerializeField] private Transform turnTransform;
-        [SerializeField] private WeaponController currentWeapon;
         
         private IInputReader _input;
         private IMover _mover;
@@ -25,6 +24,7 @@ namespace ZombieAttack.Controllers
         private IRotator _yRotator;
         private Vector3 _direction;
         private Vector2 _rotation;
+        private InventoryController _inventory;
 
         public Transform TurnTransform => turnTransform;
 
@@ -35,6 +35,7 @@ namespace ZombieAttack.Controllers
             _animation = new CharacterAnimation(this);
             _xRotator = new RotatorXCharacter(this);
             _yRotator = new RotatorYCharacter(this);
+            _inventory = GetComponent<InventoryController>();
         }
 
         private void Update()
@@ -45,7 +46,12 @@ namespace ZombieAttack.Controllers
 
             if (_input.IsAttackButtonPressed)
             {
-                currentWeapon.Attack();
+                _inventory.CurrentWeapon.Attack();
+            }
+
+            if (_input.IsInventoryButtonPressed)
+            {
+                _inventory.ChangeWeapon();
             }
         }
 

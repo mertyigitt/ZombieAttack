@@ -14,6 +14,7 @@ namespace ZombieAttack.Controllers
         
         private float _currentTime;
         private IAttackType _attackType;
+        public AttackSO AttackSo => attackSo;
 
         private void Awake()
         {
