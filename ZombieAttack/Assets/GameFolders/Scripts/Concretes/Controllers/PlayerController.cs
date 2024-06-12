@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZombieAttack.Abstracts.Controllers;
 using ZombieAttack.Abstracts.Inputs;
 using ZombieAttack.Abstracts.Movements;
 using ZombieAttack.Animation;
@@ -9,7 +10,7 @@ using ZombieAttack.Movements;
 
 namespace ZombieAttack.Controllers
 {
-    public class PlayerController : MonoBehaviour 
+    public class PlayerController : MonoBehaviour , IEntityController
     {
         [Header("Movement Informations")]
         [SerializeField] private float moveSpeed = 10f;
@@ -57,6 +58,7 @@ namespace ZombieAttack.Controllers
         {
             _animation.MoveAnimation(_direction.magnitude);
         }
+        
     }
 }
 

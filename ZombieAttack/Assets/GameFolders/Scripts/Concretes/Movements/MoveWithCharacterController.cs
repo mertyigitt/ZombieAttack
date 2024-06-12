@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZombieAttack.Abstracts.Controllers;
 using ZombieAttack.Abstracts.Movements;
 using ZombieAttack.Controllers;
 
@@ -10,9 +11,9 @@ namespace ZombieAttack.Movements
     {
         CharacterController _characterController;
 
-        public MoveWithCharacterController(PlayerController playerController)
+        public MoveWithCharacterController(IEntityController entityController)
         {
-            _characterController = playerController.GetComponent<CharacterController>();
+            _characterController = entityController.transform.GetComponent<CharacterController>();
         }
         public void MoveAction(Vector3 direction, float moveSpeed)
         {

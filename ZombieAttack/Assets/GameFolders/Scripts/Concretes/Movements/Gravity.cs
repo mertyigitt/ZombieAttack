@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace ZombieAttack.Movements
 {
+    [RequireComponent(typeof(CharacterController))]
     public class Gravity : MonoBehaviour
     {
         [SerializeField] float _graviy = -9.81f;
