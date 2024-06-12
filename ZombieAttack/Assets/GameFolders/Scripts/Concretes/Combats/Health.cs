@@ -1,0 +1,30 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using ZombieAttack.Abstracts.Combats;
+using ZombieAttack.ScriptableObjects;
+
+namespace ZombieAttack.Combats
+{
+    public class Health : MonoBehaviour , IHealth
+    {
+        [SerializeField] private HealthSO healthInfo;
+
+        private int _currentHealth;
+
+        public bool IsDead => _currentHealth <= 0;
+
+        private void Awake()
+        {
+            _currentHealth = healthInfo.MaxHealth;
+        }
+
+        public void TakeDamage(int damage)
+        {
+            if(IsDead) return;
+            
+            _currentHealth -= damage;
+        }
+    }
+}

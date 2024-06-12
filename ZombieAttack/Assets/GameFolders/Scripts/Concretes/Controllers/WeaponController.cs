@@ -1,39 +1,38 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using ZombieAttack.Abstracts.Combats;
+using ZombieAttack.Combats;
+using ZombieAttack.ScriptableObjects;
 
 namespace ZombieAttack.Controllers
 {
     public class WeaponController : MonoBehaviour
     {
+        
         [SerializeField] private bool canFire;
-        [SerializeField] private float attackMaxDelay = 0.25f;
-        [SerializeField] private Camera camera;
-        [SerializeField] private float distance = 100f;
-        [SerializeField] private LayerMask layerMask;
-
+        [SerializeField] private Transform transformObject;
+        [SerializeField] private AttackSO attackSo;
+        
         private float _currentTime;
+        private IAttackType _attackType;
+
+        private void Awake()
+        {
+            _attackType = attackSo.GetAttackType(transformObject);
+        }
 
         private void Update()
         {
             _currentTime += Time.deltaTime;
 
-            canFire = _currentTime > attackMaxDelay;
+            canFire = _currentTime > attackSo.AttackMaxDelay;
         }
         
         public void Attack()
         {
             if (!canFire) return;
-
-            Ray ray = camera.ViewportPointToRay(Vector3.one / 2f);
-
-            if (Physics.Raycast(ray, out RaycastHit hit, distance, layerMask))
-            {
-                Debug.Log(hit.collider.gameObject.name);
-                
-            } ;
+            
+            _attackType.AttackAction();
+            
             _currentTime = 0f;
         }
     }

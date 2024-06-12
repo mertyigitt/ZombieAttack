@@ -313,6 +313,7 @@ GameObject:
   - component: {fileID: 4755503758709885976}
   - component: {fileID: 6292461137960017837}
   - component: {fileID: 6759285720014428641}
+  - component: {fileID: 7070831680409574304}
   - component: {fileID: 1822410539975219144}
   - component: {fileID: 3867607116231937259}
   - component: {fileID: 595904175467875751}
@@ -391,6 +392,19 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.94, z: 0}
+--- !u!114 &7070831680409574304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3674251295319305443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bdfd4a43b74fb646966327b32d8c660, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthInfo: {fileID: 0}
 --- !u!114 &1822410539975219144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -916,7 +930,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd6043bde05a7fc4cba197d06915c1e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damping: {x: 0.1, y: 0.5, z: 0.3}
+  Damping: {x: 0, y: 0, z: 0}
   ShoulderOffset: {x: 0, y: 0, z: -0.07}
   VerticalArmLength: 0.4
   CameraSide: 1
