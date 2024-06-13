@@ -18,6 +18,9 @@ namespace ZombieAttack.Controllers
         private IHealth _health;
         private CharacterAnimation _animation;
         NavMeshAgent _navMeshAgent;
+        InventoryController _inventoryController;
+        private Transform _playerTransform;
+        private bool _canAttack;
 
         private void Awake()
         {
@@ -25,18 +28,37 @@ namespace ZombieAttack.Controllers
             _animation = new CharacterAnimation(this);
             _navMeshAgent = GetComponent<NavMeshAgent>();
             _health = GetComponent<IHealth>();
+            _inventoryController = GetComponent<InventoryController>();
         }
+
+        private void Start()
+        {
+            _playerTransform = FindObjectOfType<PlayerController>().transform;
+        }
+        
 
         private void Update()
         {
             if(_health.IsDead) return;
-            
-            _mover.MoveAction(playerPrefab.transform.position, 10f);
+
+            _mover.MoveAction(_playerTransform.position, 10f);
+
+            _canAttack = Vector3.Distance(_playerTransform.position, this.transform.position) <=
+                         _navMeshAgent.stoppingDistance && _navMeshAgent.velocity == Vector3.zero;
+        }
+
+        private void FixedUpdate()
+        {
+            if (_canAttack)
+            {
+                _inventoryController.CurrentWeapon.Attack();
+            }
         }
 
         private void LateUpdate()
         {
             _animation.MoveAnimation(_navMeshAgent.velocity.magnitude);
+            _animation.AttackAnimation(_canAttack);
         }
     }
 }

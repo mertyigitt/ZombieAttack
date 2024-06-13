@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackType: 1
   damage: 1
-  floatValue: 0.25
+  floatValue: 0.4
   layerMask:
     serializedVersion: 2
-    m_Bits: 1
-  attackMaxDelay: 0.15
+    m_Bits: 4294967295
+  attackMaxDelay: 1
+  animatorOverride: {fileID: 0}

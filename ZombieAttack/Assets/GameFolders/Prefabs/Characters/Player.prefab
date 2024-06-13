@@ -267,7 +267,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8746020286453566373
 Transform:
   m_ObjectHideFlags: 0
@@ -353,7 +353,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4755503758709885976}
-  - component: {fileID: 6292461137960017837}
   - component: {fileID: 6759285720014428641}
   - component: {fileID: 7070831680409574304}
   - component: {fileID: 1822410539975219144}
@@ -387,29 +386,6 @@ Transform:
   - {fileID: 1196754527875757417}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &6292461137960017837
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3674251295319305443}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 1.7891712
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.91261077, z: 0}
 --- !u!143 &6759285720014428641
 CharacterController:
   m_ObjectHideFlags: 0
@@ -464,7 +440,6 @@ MonoBehaviour:
   moveSpeed: 5
   turnSpeed: 5
   turnTransform: {fileID: 9025341075630327329}
-  currentWeapon: {fileID: 8305341719644835586}
 --- !u!114 &3867607116231937259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -539,6 +514,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 844e9c56-de3f-4ec1-b02f-2a89f8e0c7b1
     m_ActionName: OnFoot/Attack[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 595904175467875751}
+        m_TargetAssemblyTypeName: ZombieAttack.Inputs.InputReader, Assembly-CSharp
+        m_MethodName: OnInventoryPressed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 43fb449f-7824-4b29-94aa-24ed644ef394
+    m_ActionName: OnFoot/Inventory[/Keyboard/i]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: OnFoot
@@ -581,6 +572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fd8fe0980edbf14cb9dd48935ca5a99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weapons: []
 --- !u!1 &4714558569655958743
 GameObject:
   m_ObjectHideFlags: 0

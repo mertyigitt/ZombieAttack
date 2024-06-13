@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4581156501980396838}
   - component: {fileID: 4071774118173448888}
   - component: {fileID: 1038882531524720084}
+  - component: {fileID: 2058634669005628163}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -34,6 +35,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1058702236543033779}
+  - {fileID: 4117494791426984685}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6646670575869929382
@@ -107,6 +109,143 @@ CapsuleCollider:
   m_Height: 1.7589033
   m_Direction: 1
   m_Center: {x: 0, y: 0.8907243, z: 0}
+--- !u!114 &2058634669005628163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 453037055750185695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fd8fe0980edbf14cb9dd48935ca5a99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapons: []
+--- !u!1 &1080528012070813326
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4117494791426984685}
+  - component: {fileID: 3132982135486062455}
+  m_Layer: 0
+  m_Name: MeleeAttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4117494791426984685
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1080528012070813326}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.094, z: 0.896}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5815246474448076909}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3132982135486062455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1080528012070813326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6621430fd738a044795d5594a76f46ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackSo: {fileID: 11400000, guid: f5a073354a4078a4da7720cd53f0b06a, type: 2}
+--- !u!1 &1721817101786328651
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1293100017283563469}
+  - component: {fileID: 3559754052924860520}
+  m_Layer: 0
+  m_Name: Weapon3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1293100017283563469
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1721817101786328651}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6132055280067344758}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3559754052924860520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1721817101786328651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c596abf7f854f7a4eb686831970e907a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canFire: 0
+  transformObject: {fileID: 4117494791426984685}
+  attackSo: {fileID: 11400000, guid: f5a073354a4078a4da7720cd53f0b06a, type: 2}
+--- !u!1 &3837081823630136762
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6132055280067344758}
+  m_Layer: 0
+  m_Name: WeaponPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6132055280067344758
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3837081823630136762}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1293100017283563469}
+  m_Father: {fileID: 1192980716583500176}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &665404020242925144
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -188,7 +327,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 1e9c2356760454f45864751aab4a9769,
         type: 3}
       propertyPath: m_Name
-      value: Mremireh O Desbiens
+      value: Body
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 1e9c2356760454f45864751aab4a9769,
         type: 3}
@@ -202,12 +341,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 1852576806548013000, guid: 1e9c2356760454f45864751aab4a9769,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6132055280067344758}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e9c2356760454f45864751aab4a9769, type: 3}
 --- !u!4 &1058702236543033779 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1e9c2356760454f45864751aab4a9769,
+    type: 3}
+  m_PrefabInstance: {fileID: 665404020242925144}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1192980716583500176 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1852576806548013000, guid: 1e9c2356760454f45864751aab4a9769,
     type: 3}
   m_PrefabInstance: {fileID: 665404020242925144}
   m_PrefabAsset: {fileID: 0}

@@ -63,6 +63,7 @@ namespace ZombieAttack.Controllers
         private void LateUpdate()
         {
             _animation.MoveAnimation(_direction.magnitude);
+            _animation.AttackAnimation(_input.IsAttackButtonPressed);
         }
         
     }
