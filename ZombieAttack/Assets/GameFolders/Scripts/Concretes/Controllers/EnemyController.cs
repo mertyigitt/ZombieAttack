@@ -1,64 +1,75 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using ZombieAttack.Abstracts.Combats;
 using ZombieAttack.Abstracts.Controllers;
 using ZombieAttack.Abstracts.Movements;
 using ZombieAttack.Animation;
+using ZombieAttack.Combats;
 using ZombieAttack.Movements;
+using ZombieAttack.States;
+using ZombieAttack.States.EnemyStates;
 
 namespace ZombieAttack.Controllers
 {
-    public class EnemyController : MonoBehaviour , IEntityController
+    public class EnemyController : MonoBehaviour , IEnemyController
     {
         [SerializeField] private Transform playerPrefab;
-        private IMover _mover;
         private IHealth _health;
-        private CharacterAnimation _animation;
         NavMeshAgent _navMeshAgent;
-        InventoryController _inventoryController;
-        private Transform _playerTransform;
         private bool _canAttack;
+        private StateMachine _stateMachine;
+
+        public bool CanAttack => Vector3.Distance(Target.position, this.transform.position) <=
+            _navMeshAgent.stoppingDistance && _navMeshAgent.velocity == Vector3.zero;
+
+        public IMover Mover { get; private set; }
+        public InventoryController Inventory { get; private set; }
+        public CharacterAnimation Animation { get; private set; }
+        public Dead Dead { get; private set; }
+        public Transform Target { get; set; }
+        public float Magnitude => _navMeshAgent.velocity.magnitude;
 
         private void Awake()
         {
-            _mover = new MoveWithNavMesh(this);
-            _animation = new CharacterAnimation(this);
+            Mover = new MoveWithNavMesh(this);
+            Animation = new CharacterAnimation(this);
+            Inventory = GetComponent<InventoryController>();
+            Dead = GetComponent<Dead>();
+            
             _navMeshAgent = GetComponent<NavMeshAgent>();
             _health = GetComponent<IHealth>();
-            _inventoryController = GetComponent<InventoryController>();
+            _stateMachine = new StateMachine();
         }
 
         private void Start()
         {
-            _playerTransform = FindObjectOfType<PlayerController>().transform;
+            Target = FindObjectOfType<PlayerController>().transform;
+            
+            ChaseState chaseState = new ChaseState(this);
+            AttackState attackState = new AttackState(this);
+            DeadState deadState = new DeadState(this);
+            
+            _stateMachine.AddState(chaseState,attackState,() => CanAttack);
+            _stateMachine.AddState(attackState,chaseState, () => !CanAttack);
+            _stateMachine.AddAnyState(deadState, () => _health.IsDead);
+            
+            _stateMachine.SetState(chaseState);
         }
         
 
         private void Update()
         {
-            if(_health.IsDead) return;
-
-            _mover.MoveAction(_playerTransform.position, 10f);
-
-            _canAttack = Vector3.Distance(_playerTransform.position, this.transform.position) <=
-                         _navMeshAgent.stoppingDistance && _navMeshAgent.velocity == Vector3.zero;
+            _stateMachine.Tick();
         }
 
         private void FixedUpdate()
         {
-            if (_canAttack)
-            {
-                _inventoryController.CurrentWeapon.Attack();
-            }
+            _stateMachine.FixedTick();
         }
 
         private void LateUpdate()
         {
-            _animation.MoveAnimation(_navMeshAgent.velocity.magnitude);
-            _animation.AttackAnimation(_canAttack);
+            _stateMachine.LateTick();
         }
     }
 }

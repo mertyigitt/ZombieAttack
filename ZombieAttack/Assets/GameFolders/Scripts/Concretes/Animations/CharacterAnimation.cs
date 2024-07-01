@@ -26,5 +26,10 @@ namespace ZombieAttack.Animation
         {
             _animator.SetBool("isAttack", canAttack);
         }
+        
+        public void DeadAnimation()
+        {
+            _animator.SetTrigger("dying");
+        }
     }
 }

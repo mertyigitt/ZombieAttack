@@ -6,8 +6,10 @@ namespace ZombieAttack.Abstracts.States
 {
     public interface IState 
     {
-        void Tick();
         void OnEnter();
         void OnExit();
+        void Tick();
+        void FixedTick();
+        void LateTick();
     }
 }

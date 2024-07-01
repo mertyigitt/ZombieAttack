@@ -36,6 +36,16 @@ namespace ZombieAttack.States
             }
             _currentState.Tick();
         }
+        
+        public void FixedTick()
+        {
+            _currentState.FixedTick();
+        }
+
+        public void LateTick()
+        {
+            _currentState.LateTick();
+        }
 
         private StateTransformer CheckForTransformer()
         {
@@ -63,5 +73,7 @@ namespace ZombieAttack.States
             StateTransformer stateTransformer = new StateTransformer(null, to , condition);
             _anyStateTransformers.Add(stateTransformer);
         }
+
+        
     }
 }
