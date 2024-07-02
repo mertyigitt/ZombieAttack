@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MeleeAttackSword
   m_EditorClassIdentifier: 
   attackType: 1
-  damage: 50
+  damage: 10
   floatValue: 0.8
   layerMask:
     serializedVersion: 2
