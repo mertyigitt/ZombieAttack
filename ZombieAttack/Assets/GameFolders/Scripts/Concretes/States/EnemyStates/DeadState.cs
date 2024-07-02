@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using ZombieAttack.Abstracts.Controllers;
 using ZombieAttack.Abstracts.States;
+using ZombieAttack.Managers;
 
 namespace ZombieAttack.States.EnemyStates
 {
@@ -19,6 +20,7 @@ namespace ZombieAttack.States.EnemyStates
         {
             _enemyController.Dead.DeadAction();
             _enemyController.Animation.DeadAnimation();
+            _enemyController.transform.GetComponent<CapsuleCollider>().enabled = false;
         }
 
         public void OnExit()

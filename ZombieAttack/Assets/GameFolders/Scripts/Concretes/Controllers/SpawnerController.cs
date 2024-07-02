@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZombieAttack.Managers;
 using ZombieAttack.ScriptableObjects;
 
 namespace ZombieAttack.Controllers
@@ -20,7 +21,7 @@ namespace ZombieAttack.Controllers
         private void Update()
         {
             _currentTime += Time.deltaTime;
-            if (_currentTime > _maxTime)
+            if (_currentTime > _maxTime && EnemyManager.Instance.CanSpawn)
             {
                 Spawn();
             }
@@ -28,7 +29,8 @@ namespace ZombieAttack.Controllers
 
         private void Spawn()
         {
-            Instantiate(spawnInfo.EnemyPrefab, transform.position, Quaternion.identity);
+            EnemyController enemyController = Instantiate(spawnInfo.EnemyPrefab, transform.position, Quaternion.identity, transform);
+            EnemyManager.Instance.AddEnemyController(enemyController);
             _currentTime = 0f;
             _maxTime = spawnInfo.RandomSpawnMaxTime;
         }

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZombieAttack.Controllers;
+using ZombieAttack.Managers;
 
 namespace ZombieAttack.Combats
 {
@@ -15,7 +17,7 @@ namespace ZombieAttack.Combats
         
         private IEnumerator DeadActionAsync()
         {
-            GetComponent<CapsuleCollider>().enabled = false;
+            EnemyManager.Instance.RemoveEnemyController(this.GetComponent<EnemyController>());
             yield return new WaitForSeconds(delayTime);
             Destroy(this.gameObject);
         }

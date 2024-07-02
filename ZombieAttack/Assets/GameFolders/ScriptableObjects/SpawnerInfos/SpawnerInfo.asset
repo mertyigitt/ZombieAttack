@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b38e40e053556f41b69b8c7702a81fc, type: 3}
   m_Name: SpawnerInfo
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 0}
+  enemyPrefab: {fileID: 4581156501980396838, guid: 6a3e7cd90d34d06419a4e04c5c5addca,
+    type: 3}
   maxSpawnTime: 15
   minSpawnTime: 3
