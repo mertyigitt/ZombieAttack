@@ -13,6 +13,7 @@ namespace ZombieAttack.Managers
         [SerializeField] private List<EnemyController> enemies;
 
         public bool CanSpawn => maxCountOnGame > enemies.Count;
+        public bool IsListEmpty => enemies.Count <= 0;
         private void Awake()
         {
             SetSingletonThisGameObject(this);
@@ -27,6 +28,7 @@ namespace ZombieAttack.Managers
         public void RemoveEnemyController(EnemyController enemyController)
         {
             enemies.Remove(enemyController);
+            GameManager.Instance.DecreaseWaveCount();
         }
     }
 }
