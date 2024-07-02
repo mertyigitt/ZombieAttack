@@ -1,0 +1,36 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using ZombieAttack.ScriptableObjects;
+
+namespace ZombieAttack.Controllers
+{
+    public class SpawnerController : MonoBehaviour
+    {
+        [SerializeField] private SpawnInfoSO spawnInfo;
+        float _currentTime = 0f;
+        private float _maxTime;
+
+        private void Start()
+        {
+            _maxTime = spawnInfo.RandomSpawnMaxTime;
+        }
+
+        private void Update()
+        {
+            _currentTime += Time.deltaTime;
+            if (_currentTime > _maxTime)
+            {
+                Spawn();
+            }
+        }
+
+        private void Spawn()
+        {
+            Instantiate(spawnInfo.EnemyPrefab, transform.position, Quaternion.identity);
+            _currentTime = 0f;
+            _maxTime = spawnInfo.RandomSpawnMaxTime;
+        }
+    }
+}

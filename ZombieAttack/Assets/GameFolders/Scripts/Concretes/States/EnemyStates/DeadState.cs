@@ -17,15 +17,13 @@ namespace ZombieAttack.States.EnemyStates
         }
         public void OnEnter()
         {
-            Debug.Log($"{nameof(DeadState)} {nameof(OnEnter)}");
             _enemyController.Dead.DeadAction();
             _enemyController.Animation.DeadAnimation();
-            _enemyController.transform.GetComponent<CapsuleCollider>().enabled = false;
         }
 
         public void OnExit()
         {
-            Debug.Log($"{nameof(DeadState)} {nameof(OnExit)}");
+            
         }
 
         public void Tick()

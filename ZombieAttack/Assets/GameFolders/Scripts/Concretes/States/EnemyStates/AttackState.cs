@@ -16,7 +16,7 @@ namespace ZombieAttack.States.EnemyStates
         }
         public void OnEnter()
         {
-            Debug.Log($"{nameof(AttackState)} {nameof(OnEnter)}");
+            
         }
 
         public void OnExit()

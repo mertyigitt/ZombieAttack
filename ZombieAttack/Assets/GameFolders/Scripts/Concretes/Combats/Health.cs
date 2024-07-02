@@ -13,7 +13,8 @@ namespace ZombieAttack.Combats
 
         private int _currentHealth;
 
-        public event System.Action<int, int> OnTakeHit; 
+        public event Action<int, int> OnTakeHit;
+        public event Action OnDead;
 
         public bool IsDead => _currentHealth <= 0;
 
@@ -29,6 +30,10 @@ namespace ZombieAttack.Combats
             _currentHealth -= damage;
             
             OnTakeHit?.Invoke(_currentHealth,healthInfo.MaxHealth);
+            if (IsDead)
+            {
+                OnDead?.Invoke();  
+            }
         }
     }
 }

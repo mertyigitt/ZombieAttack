@@ -18,12 +18,11 @@ namespace ZombieAttack.States.EnemyStates
         }
         public void OnEnter()
         {
-            Debug.Log($"{nameof(ChaseState)} {nameof(OnEnter)}");
+
         }
 
         public void OnExit()
         {
-            Debug.Log($"{nameof(ChaseState)} {nameof(OnExit)}");
             _enemyController.Mover.MoveAction(_enemyController.transform.position, 0f);
         }
 
@@ -34,7 +33,7 @@ namespace ZombieAttack.States.EnemyStates
 
         public void FixedTick()
         {
-            
+            return;
         }
 
         public void LateTick()

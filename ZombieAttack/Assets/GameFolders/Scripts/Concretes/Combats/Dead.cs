@@ -15,6 +15,7 @@ namespace ZombieAttack.Combats
         
         private IEnumerator DeadActionAsync()
         {
+            GetComponent<CapsuleCollider>().enabled = false;
             yield return new WaitForSeconds(delayTime);
             Destroy(this.gameObject);
         }

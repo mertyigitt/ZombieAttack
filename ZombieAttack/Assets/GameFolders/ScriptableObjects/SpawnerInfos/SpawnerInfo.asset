@@ -9,14 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a325df0220a3ba43a604592c94dbce2, type: 3}
-  m_Name: MeleeAttackHandToHand
+  m_Script: {fileID: 11500000, guid: 2b38e40e053556f41b69b8c7702a81fc, type: 3}
+  m_Name: SpawnerInfo
   m_EditorClassIdentifier: 
-  attackType: 1
-  damage: 1
-  floatValue: 0.5
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  attackMaxDelay: 1
-  animatorOverride: {fileID: 0}
+  enemyPrefab: {fileID: 0}
+  maxSpawnTime: 15
+  minSpawnTime: 3
