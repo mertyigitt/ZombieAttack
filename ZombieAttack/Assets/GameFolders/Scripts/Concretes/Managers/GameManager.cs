@@ -31,6 +31,7 @@ namespace ZombieAttack.Managers
         {
             _currentWaveMaxCount = maxWaveBoundaryCount;
         }
+        
 
         public void LoadLevel(string levelName)
         {

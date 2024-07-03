@@ -1,6 +1,5 @@
 using UnityEngine;
 using ZombieAttack.Abstracts.Combats;
-using ZombieAttack.Combats;
 using ZombieAttack.ScriptableObjects;
 
 namespace ZombieAttack.Controllers
@@ -9,23 +8,21 @@ namespace ZombieAttack.Controllers
     {
         
         [SerializeField] private bool canFire;
-        [SerializeField] private Transform transformObject;
-        [SerializeField] private AttackSO attackSo;
         
         private float _currentTime;
         private IAttackType _attackType;
-        public AttackSO AttackSo => attackSo;
+        public AnimatorOverrideController AnimatorOverrideController => _attackType.AttackInfo.AnimatorOverride;
 
         private void Awake()
         {
-            _attackType = attackSo.GetAttackType(transformObject);
+            _attackType = GetComponent<IAttackType>();
         }
 
         private void Update()
         {
             _currentTime += Time.deltaTime;
 
-            canFire = _currentTime > attackSo.AttackMaxDelay;
+            canFire = _currentTime > _attackType.AttackInfo.AttackMaxDelay;
         }
         
         public void Attack()

@@ -1,3 +1,4 @@
+using Microsoft.Win32.SafeHandles;
 using UnityEngine;
 using ZombieAttack.Abstracts.Combats;
 using ZombieAttack.Managers;
@@ -5,16 +6,13 @@ using ZombieAttack.ScriptableObjects;
 
 namespace ZombieAttack.Combats
 {
-    public class MeleeAttackType : IAttackType
+    public class MeleeAttackType : MonoBehaviour, IAttackType
     {
-        private Transform _transformObject;
-        AttackSO _attackSo;
+        [SerializeField] private Transform _transformObject;
+        [SerializeField] private AttackSO _attackSo;
+
+        public AttackSO AttackInfo => _attackSo;
         
-        public MeleeAttackType(Transform transformObject, AttackSO attackSo)
-        {
-            _transformObject = transformObject;
-            _attackSo = attackSo;
-        }
         public void AttackAction()
         {
             Vector3 attackPoint = _transformObject.position;

@@ -4,16 +4,9 @@ using ZombieAttack.Combats;
 
 namespace ZombieAttack.ScriptableObjects
 {
-    enum AttackTypeEnum : byte
-    {
-        Range,
-        Melee
-    }
-    
     [CreateAssetMenu(fileName = "Attack Info", menuName = "Combat/Attack Information/Create New", order = 51)]
     public class AttackSO : ScriptableObject
     {
-        [SerializeField] private AttackTypeEnum attackType;
         [SerializeField] private int damage = 10;
         [SerializeField] private float floatValue = 1f;
         [SerializeField] private LayerMask layerMask;
@@ -28,16 +21,5 @@ namespace ZombieAttack.ScriptableObjects
         public AnimatorOverrideController AnimatorOverride => animatorOverride;
         public AudioClip AudioClip => audioClip;
         
-        public IAttackType GetAttackType(Transform transform)
-        {
-            if (attackType == AttackTypeEnum.Range)
-            {
-                return new RangeAttackType(transform, this);
-            }
-            else
-            {
-                return new MeleeAttackType(transform, this);
-            }
-        }
     }
 }
