@@ -20,3 +20,4 @@ MonoBehaviour:
     m_Bits: 1
   attackMaxDelay: 0.25
   animatorOverride: {fileID: 22100000, guid: 76c2e1b60bab1c24cb72294cf5bfbe10, type: 2}
+  audioClip: {fileID: 8300000, guid: 6e8977724d2410d46ac0e23d79554da9, type: 3}

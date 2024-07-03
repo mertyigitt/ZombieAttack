@@ -19,12 +19,14 @@ namespace ZombieAttack.ScriptableObjects
         [SerializeField] private LayerMask layerMask;
         [SerializeField] private float attackMaxDelay = 0.25f;
         [SerializeField] private AnimatorOverrideController animatorOverride;
+        [SerializeField] private AudioClip audioClip;
 
         public int Damage => damage;
         public float FloatValue => floatValue;
         public LayerMask LayerMask => layerMask;
         public float AttackMaxDelay => attackMaxDelay;
         public AnimatorOverrideController AnimatorOverride => animatorOverride;
+        public AudioClip AudioClip => audioClip;
         
         public IAttackType GetAttackType(Transform transform)
         {

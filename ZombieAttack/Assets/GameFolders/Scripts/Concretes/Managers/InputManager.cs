@@ -38,12 +38,14 @@ namespace ZombieAttack.Managers
             _playerIndex++;
             if (_playerIndex >= prefabs.Length) _playerIndex = prefabs.Length - 1;
             _playerInputManager.playerPrefab = prefabs[_playerIndex];
+            _playerInputManager.splitScreen = true;
         }
         public void HandleOnLeft()
         {
             _playerIndex--;
             if (_playerIndex < 0) _playerIndex = 0;
             _playerInputManager.playerPrefab = prefabs[_playerIndex];
+            _playerInputManager.splitScreen = false;
         }
     }
 }

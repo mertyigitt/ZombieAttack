@@ -1,5 +1,6 @@
 using UnityEngine;
 using ZombieAttack.Abstracts.Combats;
+using ZombieAttack.Managers;
 using ZombieAttack.ScriptableObjects;
 
 namespace ZombieAttack.Combats
@@ -26,6 +27,7 @@ namespace ZombieAttack.Combats
                     health.TakeDamage(_attackSo.Damage);
                 }
             }
+            SoundManager.Instance.MeleeAttackSound(_attackSo.AudioClip, _transformObject.position);
         }
     }
 }

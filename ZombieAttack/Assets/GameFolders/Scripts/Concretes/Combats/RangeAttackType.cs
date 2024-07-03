@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ZombieAttack.Abstracts.Combats;
+using ZombieAttack.Managers;
 using ZombieAttack.ScriptableObjects;
 
 namespace ZombieAttack.Combats
@@ -27,6 +28,7 @@ namespace ZombieAttack.Combats
                     health.TakeDamage(_attackSo.Damage);
                 }
             }
+            SoundManager.Instance.RangeAttackSound(_attackSo.AudioClip, _camera.transform.position);
         }
     }
 }

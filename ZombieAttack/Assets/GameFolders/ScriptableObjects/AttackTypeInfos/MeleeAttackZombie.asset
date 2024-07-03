@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a325df0220a3ba43a604592c94dbce2, type: 3}
-  m_Name: MeleeAttackHandToHand
+  m_Name: MeleeAttackZombie
   m_EditorClassIdentifier: 
   attackType: 1
   damage: 10
@@ -20,3 +20,4 @@ MonoBehaviour:
     m_Bits: 4294967295
   attackMaxDelay: 1
   animatorOverride: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: 2ad76c0d8d0a83b459a2dd01d25ffa6a, type: 3}

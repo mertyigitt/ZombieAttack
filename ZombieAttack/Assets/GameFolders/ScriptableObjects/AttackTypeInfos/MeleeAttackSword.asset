@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: MeleeAttackSword
   m_EditorClassIdentifier: 
   attackType: 1
-  damage: 10
+  damage: 50
   floatValue: 0.8
   layerMask:
     serializedVersion: 2
     m_Bits: 1
-  attackMaxDelay: 0.1
+  attackMaxDelay: 1
   animatorOverride: {fileID: 22100000, guid: d702400ce0a80754982591e2ef2ba3a4, type: 2}
+  audioClip: {fileID: 8300000, guid: 6d08526e99ed5ca4aa8fd8e4d36002e1, type: 3}

@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using ZombieAttack.Abstracts.Combats;
 using ZombieAttack.Abstracts.Controllers;
@@ -18,6 +15,7 @@ namespace ZombieAttack.Controllers
         [SerializeField] private float moveSpeed = 10f;
         [SerializeField] private float turnSpeed = 10f;
         [SerializeField] private Transform turnTransform;
+        [SerializeField] private Transform spineTransform;
 
         [Header("UIs")]
         [SerializeField] private GameObject gameOverPanel;
@@ -28,6 +26,7 @@ namespace ZombieAttack.Controllers
         private IHealth _health;
         private IRotator _xRotator;
         private IRotator _yRotator;
+        private IRotator _spineRotator;
         private Vector3 _direction;
         private Vector2 _rotation;
         private InventoryController _inventory;
@@ -42,6 +41,7 @@ namespace ZombieAttack.Controllers
             _animation = new CharacterAnimation(this);
             _xRotator = new RotatorXCharacter(this);
             _yRotator = new RotatorYCharacter(this);
+            _spineRotator = new SpineRotator(spineTransform);
             _inventory = GetComponent<InventoryController>();
         }
 
@@ -67,8 +67,9 @@ namespace ZombieAttack.Controllers
             if(_health.IsDead) return;
             
             _direction = _input.Direction;
-            _xRotator.RotationAction(_input.Rotation.x, turnSpeed);
-            _yRotator.RotationAction(_input.Rotation.y,turnSpeed);
+            _rotation = _input.Rotation;
+            _xRotator.RotationAction(_rotation.x, turnSpeed);
+            _yRotator.RotationAction(_rotation.y,turnSpeed);
 
             if (_input.IsAttackButtonPressed)
             {
@@ -94,6 +95,8 @@ namespace ZombieAttack.Controllers
             
             _animation.MoveAnimation(_direction.magnitude);
             _animation.AttackAnimation(_input.IsAttackButtonPressed);
+            
+            _spineRotator.RotationAction(_rotation.y, turnSpeed);
         }
         
     }
