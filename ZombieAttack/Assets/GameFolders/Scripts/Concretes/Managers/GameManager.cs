@@ -14,9 +14,11 @@ namespace ZombieAttack.Managers
         [SerializeField] private int maxWaveBoundaryCount = 50;
         [SerializeField] float waveMultiple = 1.2f;
         [SerializeField] private float waitNextLevel = 10f;
+        [SerializeField] private int playerCount = 0;
         
         private int _currentWaveMaxCount = 100;
         public bool IsWaveFinished => _currentWaveMaxCount <= 0;
+        public int PlayerCount => playerCount;
 
         public event Action<int> OnNextWave;
         
@@ -47,6 +49,26 @@ namespace ZombieAttack.Managers
             else
             {
                 _currentWaveMaxCount--;
+            }
+        }
+        
+        public void IncreasePlayerCount()
+        {
+            playerCount++;
+        }
+
+        public void ReturnMenu()
+        {
+            if (playerCount > 1)
+            {
+                playerCount--;
+            }
+            else
+            {
+                playerCount = 0;
+                EnemyManager.Instance.DestroyAllEnemies();
+                EnemyManager.Instance.Targets.Clear();
+                LoadLevel("MenuScene");
             }
         }
         

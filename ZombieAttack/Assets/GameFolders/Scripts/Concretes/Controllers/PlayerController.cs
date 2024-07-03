@@ -7,6 +7,7 @@ using ZombieAttack.Abstracts.Controllers;
 using ZombieAttack.Abstracts.Inputs;
 using ZombieAttack.Abstracts.Movements;
 using ZombieAttack.Animation;
+using ZombieAttack.Managers;
 using ZombieAttack.Movements;
 
 namespace ZombieAttack.Controllers
@@ -17,6 +18,9 @@ namespace ZombieAttack.Controllers
         [SerializeField] private float moveSpeed = 10f;
         [SerializeField] private float turnSpeed = 10f;
         [SerializeField] private Transform turnTransform;
+
+        [Header("UIs")]
+        [SerializeField] private GameObject gameOverPanel;
         
         private IInputReader _input;
         private IMover _mover;
@@ -43,9 +47,20 @@ namespace ZombieAttack.Controllers
 
         private void OnEnable()
         {
-            _health.OnDead += () => _animation.DeadAnimation();
+            _health.OnDead += () =>
+            {
+                _animation.DeadAnimation();
+                gameOverPanel.SetActive(true);
+            };
+            
+            EnemyManager.Instance.Targets.Add(this.transform);
         }
-        
+
+        private void OnDisable()
+        {
+            EnemyManager.Instance.Targets.Remove(this.transform);
+        }
+
 
         private void Update()
         {

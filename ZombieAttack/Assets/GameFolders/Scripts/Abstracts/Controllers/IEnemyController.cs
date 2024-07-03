@@ -9,11 +9,12 @@ namespace ZombieAttack.Abstracts.Controllers
 {
     public interface IEnemyController : IEntityController
     {
-        public IMover Mover { get;}
-        public InventoryController Inventory { get;}
-        public CharacterAnimation Animation { get;}
-        public Dead Dead { get;}
-        public Transform Target { get; set; }
-        public float Magnitude { get;}
+        IMover Mover { get;}
+        InventoryController Inventory { get;}
+        CharacterAnimation Animation { get;}
+        Dead Dead { get;}
+        Transform Target { get; set; }
+        float Magnitude { get;}
+        void FindNearestTarget();
     }
 }

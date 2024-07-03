@@ -12,12 +12,14 @@ namespace ZombieAttack.Managers
         [SerializeField] private int maxCountOnGame = 50;
         [SerializeField] private List<EnemyController> enemies;
 
+        public List<Transform> Targets { get; private set; }
         public bool CanSpawn => maxCountOnGame > enemies.Count;
         public bool IsListEmpty => enemies.Count <= 0;
         private void Awake()
         {
             SetSingletonThisGameObject(this);
             enemies = new List<EnemyController>();
+            Targets = new List<Transform>();
         }
 
         public void AddEnemyController(EnemyController enemyController)
@@ -29,6 +31,15 @@ namespace ZombieAttack.Managers
         {
             enemies.Remove(enemyController);
             GameManager.Instance.DecreaseWaveCount();
+        }
+
+        public void DestroyAllEnemies()
+        {
+            foreach (EnemyController enemy in enemies)
+            {
+                Destroy(enemy.gameObject);                
+            }
+            enemies.Clear();
         }
     }
 }

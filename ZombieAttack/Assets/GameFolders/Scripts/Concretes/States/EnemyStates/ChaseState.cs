@@ -33,7 +33,7 @@ namespace ZombieAttack.States.EnemyStates
 
         public void FixedTick()
         {
-            return;
+            _enemyController.FindNearestTarget();
         }
 
         public void LateTick()

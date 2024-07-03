@@ -5,6 +5,7 @@ using ZombieAttack.Abstracts.Controllers;
 using ZombieAttack.Abstracts.Movements;
 using ZombieAttack.Animation;
 using ZombieAttack.Combats;
+using ZombieAttack.Managers;
 using ZombieAttack.Movements;
 using ZombieAttack.States;
 using ZombieAttack.States.EnemyStates;
@@ -43,8 +44,8 @@ namespace ZombieAttack.Controllers
 
         private void Start()
         {
-            Target = FindObjectOfType<PlayerController>().transform;
-            
+            FindNearestTarget();
+
             ChaseState chaseState = new ChaseState(this);
             AttackState attackState = new AttackState(this);
             DeadState deadState = new DeadState(this);
@@ -55,7 +56,7 @@ namespace ZombieAttack.Controllers
             
             _stateMachine.SetState(chaseState);
         }
-        
+
 
         private void Update()
         {
@@ -70,6 +71,21 @@ namespace ZombieAttack.Controllers
         private void LateUpdate()
         {
             _stateMachine.LateTick();
+        }
+        
+        public void FindNearestTarget()
+        {
+            Transform nearest = EnemyManager.Instance.Targets[0];
+            foreach (Transform target in EnemyManager.Instance.Targets)
+            {
+                float nearstValue = Vector3.Distance(nearest.position, this.transform.position);
+                float newValue = Vector3.Distance(target.position, transform.position);
+                if (newValue < nearstValue)
+                {
+                    nearest = target;
+                }
+            }
+            Target = nearest;
         }
     }
 }
